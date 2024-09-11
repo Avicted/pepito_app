@@ -1,6 +1,6 @@
 # Pépito C++ program
 
-This is a C++ program that listens to Server-Sent Events (SSE) and prints the messages to the console.
+This is a multi-threaded C++ program that listens to Server-Sent Events (SSE) and prints the messages to the console.
 All messages are parsed, and the program serves as an example of how to parse SSE messages in C++.
 
 Using this code as the base, you can extend it to do whatever you want with the messages. 
@@ -37,6 +37,6 @@ clear && meson setup build --buildtype=debug && cd build && ninja && cd ..
 MIT License
 
 
-## Here is one Official Pépito account:
+## Here is one of Pépito's official accounts:
 https://x.com/PepitoTheCat 
 
