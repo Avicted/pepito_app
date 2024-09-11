@@ -11,6 +11,14 @@ https://github.com/Clement87/Pepito-API/tree/main?tab=readme-ov-file#p%C3%A9pito
 For example you could:
 - When Pépito goes in or out of the house 
     - Connect to all Philips Hue bridges on your network and flash the lights when a particular message is received.
+    - Use your imagination and do something fun with the messages.
+
+
+## Pre-requisites
+```bash
+# Arch Linux
+pacman -S meson nlohmann-json base-devel
+```
 
 ## How to build
 
