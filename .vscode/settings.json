@@ -81,7 +81,8 @@
         "text_encoding": "cpp",
         "thread": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "source_location": "cpp"
     },
     "dotnet.defaultSolution": "disable",
     "C_Cpp.default.compilerPath": "/usr/bin/clang++",

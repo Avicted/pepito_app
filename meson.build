@@ -42,13 +42,13 @@ inc_dir = include_directories(
 # Project files
 # Collect all .cpp files in the src directory
 src_files = files(
-    'src/main.cpp',
+    'src/Main.cpp',
     'src/ServerSideEventsClient.cpp',
 )
 
 # Collect all .hpp files in the includes directory
 header_files = files(
-    'includes/includes.hpp',
+    'includes/Includes.hpp',
     'includes/ServerSideEventsClient.hpp',
 )
 
