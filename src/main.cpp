@@ -1,8 +1,5 @@
-#include "includes/includes.hpp"
-#include "includes/ServerSideEventsClient.hpp"
-
-// Define the variant type for event data
-using EventData = std::variant<HeartbeatEvent, PepitoEvent>;
+#include "includes.hpp"
+#include "ServerSideEventsClient.hpp"
 
 // Global atomic flag for handling signals
 std::atomic<bool> running(true);
@@ -10,7 +7,6 @@ std::atomic<bool> running(true);
 static void
 signal_handler(int signal)
 {
-    std::cout << "Signal " << signal << " received." << std::endl;
     if (signal == SIGINT)
     {
         running = false;
@@ -38,6 +34,7 @@ handleSSEMessage(const std::string &data)
         // Strip the "data: " prefix
         std::string jsonDataStr = data.substr(6);
 
+        // Parse the JSON data
         auto jsonData = json::parse(jsonDataStr);
 
         // Check the event type
@@ -55,8 +52,10 @@ handleSSEMessage(const std::string &data)
             long time = jsonData.at("time").get<long>();
             std::cout << "Pepito event: " << type << " at time: " << time << " with image: " << img << std::endl;
 
-            // @Note(Avic): This is where we could act and perform some action based on the event
+            // Create a PepitoEvent object
             PepitoEvent pepitoEvent(type, img, time);
+
+            // @Note(Victor): This is where you would handle the event
         }
         else
         {
@@ -75,6 +74,25 @@ handleSSEMessage(const std::string &data)
     }
 }
 
+static void listenForSSE(const std::string &url)
+{
+    SSEClient client(url);
+    client.setHandler(handleSSEMessage);
+
+    while (running)
+    {
+        try
+        {
+            client.startListening();
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "Error while listening for SSE: " << e.what() << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(5)); // Wait before reconnecting
+        }
+    }
+}
+
 int main(int argc, char **argv)
 {
     std::cout << "Hello, Sailor!" << std::endl;
@@ -84,6 +102,8 @@ int main(int argc, char **argv)
 
     // Test event handling with sample data
     std::ifstream file("test_data.sse_data");
+
+    std::cout << "Reading test data..." << std::endl;
     if (file.is_open())
     {
         // Each line is a separate SSE message (JSON object)
@@ -99,26 +119,28 @@ int main(int argc, char **argv)
 
             handleSSEMessage(line);
         }
+
+        file.close();
+
+        std::cout << "Finished reading test data.\n"
+                  << std::endl;
     }
     else
     {
-        std::cerr << "Failed to open test_data.json" << std::endl;
+        std::cerr << "Failed to open test_data.sse_data\n"
+                  << std::endl;
     }
 
-    // return 0; //  Stop here for testing
-
-    // Setup Server-Side Event SSE
+    // Setup Server-Sent Event SSE
     std::string url = "https://api.thecatdoor.com/sse/v1/events";
-    SSEClient client(url);
-    client.setHandler(handleSSEMessage);
-
-    // Start listening for SSE in a separate thread
-    std::thread sseThread([&client]()
-                          { client.startListening(); });
+    std::thread sseThread(listenForSSE, url);
 
     // Main event loop
     while (running)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
+
+    sseThread.join();
+    return 0;
 }

@@ -9,3 +9,8 @@
 
 #include <atomic>
 #include <thread>
+#include <mutex>
+#include <nlohmann/json.hpp>
+
+#include <chrono>
+#include <curl/curl.h>

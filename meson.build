@@ -2,9 +2,9 @@ project('pépito_app', 'cpp',
   version : '0.1.0',
   default_options : [
     'cpp_std=c++23',
-    'warning_level=0', # 3 is the default
-    'buildtype=debug',
-    'optimization=0',
+    'warning_level=3', # 3 is the default
+    'buildtype=release',
+    'optimization=2',
   ]
 )
 
