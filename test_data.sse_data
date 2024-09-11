@@ -1,0 +1,13 @@
+data: {"event":"heartbeat","time":1726076066}
+
+data: {"event":"heartbeat","time":1726076076}
+
+data: {"event":"heartbeat","time":1726076616}
+
+data: {"event":"pepito","type":"in","time":1726076616,"img":"https://storage.thecatdoor.com/assets/1726076616-in-1665896860.jpg"}
+
+data: {"event":"heartbeat","time":1726076626}
+
+data: {"event":"heartbeat","time":1726076896}
+
+data: {"event":"pepito","type":"out","time":1726096616,"img":"https://storage.thecatdoor.com/assets/1726076616-in-1665896860.jpg"}
