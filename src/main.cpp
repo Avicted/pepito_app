@@ -74,7 +74,8 @@ handleSSEMessage(const std::string &data)
     }
 }
 
-static void listenForSSE(const std::string &url)
+static void
+listenForSSE(const std::string &url)
 {
     SSEClient client(url);
     client.setHandler(handleSSEMessage);
@@ -141,6 +142,8 @@ int main(int argc, char **argv)
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
+    std::cout << "Shutting down..." << std::endl;
     sseThread.join();
+
     return 0;
 }

@@ -3,9 +3,15 @@
 #include <curl/curl.h>
 #include <iostream>
 
-SSEClient::SSEClient(const std::string &url) : _url(url), _handler(nullptr) {}
+SSEClient::SSEClient(const std::string &url) : _url(url), _handler(nullptr)
+{
+    std::cout << "SSEClient constructor called" << std::endl;
+}
 
-SSEClient::~SSEClient() {}
+SSEClient::~SSEClient()
+{
+    std::cout << "SSEClient destructor called" << std::endl;
+}
 
 // Static callback function for handling SSE data
 size_t SSEClient::writeCallback(void *contents, size_t size, size_t nmemb, void *userp)

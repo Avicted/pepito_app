@@ -16,7 +16,7 @@ struct BaseEvent
 class HeartbeatEvent
 {
 public:
-    long long int time;
+    signed long long time;
 
     HeartbeatEvent(long t) : time(t) {}
 };
@@ -25,7 +25,7 @@ struct PepitoEvent
 {
     std::string type;
     std::string img;
-    long time;
+    signed long long time;
 
     PepitoEvent(const std::string &t, const std::string &i, long tm)
         : type(t), img(i), time(tm) {}
