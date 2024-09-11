@@ -21,16 +21,16 @@ cpp_args = [
   '-Wno-missing-field-initializers',
 ]
 link_args = [
-    '-lraylib',
+    # '-lraylib',
     '-lcurl',
 ]
 name_suffix = []
 
 # Find the raylib dependency
-raylib_dep = dependency('raylib')
+# raylib_dep = dependency('raylib')
 
 dependencies = [
-    raylib_dep,
+    # raylib_dep,
 ]
 
 # Specify the src and includes directories
