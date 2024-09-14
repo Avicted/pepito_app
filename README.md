@@ -1,5 +1,14 @@
 # Pépito C++ program
 
+
+![pépito 17 years birthday](resources/pépito_17_screenshot.png)
+
+## Here is one of Pépito's official accounts:
+https://x.com/PepitoTheCat 
+
+
+
+
 This is a multi-threaded C++ program that listens to Server-Sent Events (SSE) and prints the messages to the console.
 All messages are parsed, and the program serves as an example of how to parse SSE messages in C++.
 
@@ -24,7 +33,7 @@ pacman -S meson nlohmann-json base-devel
 
 VSCode press F5 to build and run the program.
 
-```
+```bash
 # Build the program
 clear && meson setup build --buildtype=debug && cd build && ninja && cd ..
 
@@ -35,8 +44,3 @@ clear && meson setup build --buildtype=debug && cd build && ninja && cd ..
 
 ## License
 MIT License
-
-
-## Here is one of Pépito's official accounts:
-https://x.com/PepitoTheCat 
-
