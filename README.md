@@ -7,7 +7,7 @@
 https://x.com/PepitoTheCat 
 
 
-# Phe program
+# The program
 
 This is a multi-threaded C++ program that listens to Server-Sent Events (SSE) and prints the messages to the console.
 All messages are parsed, and the program serves as an example of how to parse SSE messages in C++.
